@@ -5,12 +5,15 @@ export const abs = (p) => site.url + p;
 export const registry = new Map(); // path -> { label, parent }
 
 const nav = [
+  ['/', 'Home'],
   ['/insurance-solutions/', 'Insurance'],
   ['/business-insurance-kenya/', 'Business'],
   ['/personal-insurance/', 'Personal'],
   ['/insurance-advisory-services/', 'Advisory'],
   ['/insurance-guides/', 'Resources'],
-  ['/about/', 'About']
+  ['/financial-products/', 'Wealth Management'],
+  ['/about/', 'About'],
+  ['/contact-us/', 'Contact']
 ];
 
 // ---------- contact helpers ----------
@@ -76,7 +79,7 @@ export function indexList(paths, descOf) {
 export function ctaBand(title = 'Not sure what you need? Start with a conversation.', text = 'Tell us about your business, your family or your project. An advisor will come back with practical options and plain explanations. No pressure and no jargon.') {
   return `<section class="cta-band"><div class="wrap">
     <h2>${esc(title)}</h2><p>${esc(text)}</p>
-    <div class="btn-row"><a class="btn btn-primary" href="/get-a-quote/">Get a quote</a><a class="btn btn-light" href="/contact/">Speak to an advisor</a>${contactButtons(true)}</div>
+    <div class="btn-row"><a class="btn btn-primary" href="/get-a-quote/">Get a quote</a><a class="btn btn-light" href="/contact-us/">Speak to an advisor</a>${contactButtons(true)}</div>
   </div></section>`;
 }
 
@@ -139,18 +142,18 @@ export function layout(page) {
     : '';
   const navHtml = nav.map(([p, n]) => `<li><a href="${p}"${path.startsWith(p) && p !== '/' ? ' aria-current="page"' : ''}>${n}</a></li>`).join('');
   const mobileBar = `<div class="mobile-bar"><a class="btn btn-primary" href="/get-a-quote/">Get a quote</a>${
-    site.whatsapp ? `<a class="btn btn-light" href="${esc(waLink())}" rel="noopener">WhatsApp</a>` : site.phone ? `<a class="btn btn-light" href="${esc(telLink())}">Call</a>` : `<a class="btn btn-light" href="/contact/">Contact</a>`
+    site.whatsapp ? `<a class="btn btn-light" href="${esc(waLink())}" rel="noopener">WhatsApp</a>` : site.phone ? `<a class="btn btn-light" href="${esc(telLink())}">Call</a>` : `<a class="btn btn-light" href="/contact-us/">Contact</a>`
   }</div>`;
 
   const f = (title, items) => `<div><h2>${title}</h2><ul>${items.map(([p, n]) => `<li><a href="${p}">${n}</a></li>`).join('')}</ul></div>`;
   const footer = `<footer class="site-footer"><div class="wrap">
     <div class="foot-grid">
-      <div class="foot-brand"><span class="brand-name">${esc(site.short)}</span><p style="margin-top:.5rem">${esc(site.tagline)}. Practical insurance advice for individuals, businesses and organisations in Kenya.</p>
+      <div class="foot-brand"><span class="brand-name">${esc(site.name)}</span><p style="margin-top:.5rem">${esc(site.tagline)}. Practical insurance advice for individuals, businesses and organisations in Kenya.</p>
         <p>${esc(site.addressLine)}${site.phoneDisplay ? `<br><a href="${esc(telLink())}">${esc(site.phoneDisplay)}</a>` : ''}${site.email ? `<br><a href="${esc(mailLink())}">${esc(site.email)}</a>` : ''}</p></div>
       ${f('Business', [['/business-insurance-kenya/', 'Business insurance'], ['/sme-insurance-kenya/', 'SME insurance'], ['/wiba-insurance-kenya/', 'WIBA'], ['/professional-indemnity-insurance-kenya/', 'Professional indemnity'], ['/public-liability-insurance-kenya/', 'Public liability'], ['/business-property-insurance/fire/', 'Fire and property'], ['/cyber-insurance-kenya/', 'Cyber']])}
       ${f('Personal', [['/motor-insurance-kenya/', 'Motor'], ['/medical-insurance-kenya/', 'Medical'], ['/travel-insurance-kenya/', 'Travel'], ['/home-insurance-kenya/', 'Home'], ['/personal-accident-insurance-kenya/', 'Personal accident'], ['/financial-products/', 'Financial products']])}
       ${f('Advisory', [['/insurance-portfolio-review/', 'Insurance review'], ['/claims-assistance/', 'Claims assistance'], ['/business-risk-assessment/', 'Risk assessment'], ['/insurance-tender-support/', 'Tender support'], ['/insurance-guides/', 'Guides']])}
-      ${f('Chestnut', [['/about/', 'About'], ['/contact/', 'Contact'], ['/get-a-quote/', 'Get a quote'], ['/privacy/', 'Privacy notice']])}
+      ${f('Chestnut', [['/about/', 'About'], ['/contact-us/', 'Contact'], ['/get-a-quote/', 'Get a quote'], ['/privacy/', 'Privacy notice']])}
     </div>
     <div class="foot-legal"><span>${esc(site.iraLicenceNote)}${site.iraLicenceNumber ? ' Licence no. ' + esc(site.iraLicenceNumber) + '.' : ''}</span>
     <span>Chestnut is an intermediary. Policies are issued by insurers and are subject to their terms, conditions and exclusions. Information on this website is general and is not a substitute for advice on your circumstances.</span>
@@ -193,12 +196,12 @@ ${ga}
       <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="12" fill="#006C67"/><path d="M32 10c-9 0-16 7-16 17 0 12 9 22 16 27 7-5 16-15 16-27 0-10-7-17-16-17z" fill="#D23C3C"/><path d="M32 18v30M32 28l-7-5M32 28l7-5M32 37l-8-5M32 37l8-5" stroke="#fff" stroke-width="2.6" stroke-linecap="round" fill="none"/></svg>
       <span class="brand-text"><span class="brand-name">Chestnut</span><span class="brand-sub">The Insurance Experts</span></span>
     </a>
-    <nav aria-label="Primary"><ul class="nav-list">${navHtml}<li><a href="/contact/"${path === '/contact/' ? ' aria-current="page"' : ''}>Contact</a></li></ul></nav>
+    <nav aria-label="Primary"><ul class="nav-list">${navHtml}<li><a href="/contact-us/"${path === '/contact-us/' ? ' aria-current="page"' : ''}>Contact</a></li></ul></nav>
     <a class="btn btn-primary nav-cta" href="/get-a-quote/">Get a quote</a>
     <button class="menu-btn" aria-expanded="false" aria-controls="mobile-menu">Menu</button>
   </div>
 </div>
-<div class="mobile-menu" id="mobile-menu"><div class="wrap"><ul>${nav.map(([p, n]) => `<li><a href="${p}">${n}</a></li>`).join('')}<li><a href="/contact/">Contact</a></li><li><a href="/financial-products/">Financial products</a></li></ul></div></div>
+<div class="mobile-menu" id="mobile-menu"><div class="wrap"><ul>${nav.map(([p, n]) => `<li><a href="${p}">${n}</a></li>`).join('')}<li><a href="/contact-us/">Contact</a></li><li><a href="/financial-products/">Financial products</a></li></ul></div></div>
 </header>
 <main id="main">
 ${body}

@@ -1,0 +1,57 @@
+{
+ "aar": {
+  "label": "AAR Insurance",
+  "w": 359,
+  "h": 120
+ },
+ "apa": {
+  "label": "APA Insurance",
+  "w": 183,
+  "h": 120
+ },
+ "britam": {
+  "label": "Britam",
+  "w": 328,
+  "h": 120
+ },
+ "cic": {
+  "label": "CIC Insurance Group",
+  "w": 142,
+  "h": 120
+ },
+ "first-assurance": {
+  "label": "First Assurance",
+  "w": 620,
+  "h": 120
+ },
+ "ga": {
+  "label": "GA Insurance",
+  "w": 448,
+  "h": 120
+ },
+ "icea-lion": {
+  "label": "ICEA Lion Group",
+  "w": 166,
+  "h": 120
+ },
+ "old-mutual": {
+  "label": "Old Mutual",
+  "w": 505,
+  "h": 120
+ },
+ "sanlam-allianz": {
+  "label": "Sanlam Allianz",
+  "w": 765,
+  "h": 120
+ },
+ "fidelity": {
+  "label": "Fidelity Insurance",
+  "w": 242,
+  "h": 120
+ },
+ "jubilee": {
+  "label": "Jubilee Insurance",
+  "w": 232,
+  "h": 120
+ }
+}
